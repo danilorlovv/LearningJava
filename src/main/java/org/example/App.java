@@ -2,45 +2,53 @@ package org.example;
 import java.util.Scanner;
 public class App 
 {
+    public final static char[] vowels = new char[]{'a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'Y', 'y'};
+    public final static String morda = "|0_0|";
     public static void main( String[] args )
     {
-        String morda = "|0_0|";
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter text: ");
         String startText = scan.nextLine();
         System.out.println("You entered this: " + startText);
-        String newText1 = "";
-        String newText = "";
-        for (int i=0; i < startText.length(); i++)
-        {
-            if (Character.isLetter(startText.charAt(i)))
-            {
-                if ((isVowel(startText.charAt(i))))
-                    newText1 += morda;
-                else
-                    newText1 += startText.charAt(i); //1234142
-            }
-        }
-
-
-
-        System.out.println("We got you this: " + newText1);
-        for (int i=0; i < startText.length(); i++)
-        {
-            if (Character.isLetter(startText.charAt(i)))
-            {
-                if (Character.isLowerCase(startText.charAt(i)))
-                    newText += Character.toUpperCase(startText.charAt(i));
-                else
-                    newText += Character.toLowerCase(startText.charAt(i));
-            }
-        }
-
-
-
-        System.out.println("We got you this: " + newText);
+        String textWithMorda = vowelsToMorda(startText);
+        String textUpperToLower = upperToLower(startText);
+        System.out.println("We got you this: " + textWithMorda);
+        System.out.println("We got you this: " + textUpperToLower);
     }
-    public static char[] vowels = new char[]{'a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'Y', 'y'};
+
+    private static String upperToLower(String text) {
+        StringBuilder result = new StringBuilder();
+        for (int i=0; i < text.length(); i++)
+        {
+            if (Character.isLetter(text.charAt(i)))
+            {
+                if (Character.isLowerCase(text.charAt(i)))
+                    result.append(Character.toUpperCase(text.charAt(i)));
+                else
+                    result.append(Character.toLowerCase(text.charAt(i)));
+            }
+            else {
+                result.append(text.charAt(i));
+            }
+        }
+        return result.toString();
+    }
+
+    private static String vowelsToMorda(String text) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < text.length(); i++)
+        {
+            if (Character.isLetter(text.charAt(i)))
+            {
+                if ((isVowel(text.charAt(i))))
+                    result.append(morda);
+                else
+                    result.append(text.charAt(i));
+            }
+        }
+        return result.toString();
+    }
+
     public static boolean isVowel(char c)
     {
         c = Character.toLowerCase(c);  //приводим символ в нижний регистр - от заглавных к строчным буквам
