@@ -1,55 +1,32 @@
 package org.example;
+import org.example.utils.AppConstants;
+import org.example.utils.StringUtils;
+
 import java.util.Scanner;
 public class App 
 {
-    public static void main( String[] args )
+
+    public static void main(String[] args )
     {
-        String morda = "|0_0|";
+        String startText;
         Scanner scan = new Scanner(System.in);
-        System.out.println("Enter text: ");
-        String startText = scan.nextLine();
-        System.out.println("You entered this: " + startText);
-        String newText1 = "";
-        String newText = "";
-        for (int i=0; i < startText.length(); i++)
-        {
-            if (Character.isLetter(startText.charAt(i)))
-            {
-                if ((isVowel(startText.charAt(i))))
-                    newText1 += morda;
-                else
-                    newText1 += startText.charAt(i); //1234142
-            }
+        System.out.println(AppConstants.GREETINGS_TEXT);
+        String readOption = scan.nextLine();
+        switch (readOption) {
+            case AppConstants.OPTION_1:
+                System.out.println(AppConstants.OPTION_TEXT);
+                startText = scan.nextLine();
+                String textWithMorda = StringUtils.vowelsToMorda(startText);
+                System.out.println(AppConstants.REPLY_TEXT + textWithMorda);
+                break;
+            case AppConstants.OPTION_2:
+                System.out.println(AppConstants.OPTION_TEXT);
+                startText = scan.nextLine();
+                String textUpperToLower = StringUtils.upperToLower(startText);
+                System.out.println(AppConstants.REPLY_TEXT + textUpperToLower);
+                break;
+            default:
+                System.out.println(AppConstants.ERROR_TEXT);
         }
-
-
-
-        System.out.println("We got you this: " + newText1);
-        for (int i=0; i < startText.length(); i++)
-        {
-            if (Character.isLetter(startText.charAt(i)))
-            {
-                if (Character.isLowerCase(startText.charAt(i)))
-                    newText += Character.toUpperCase(startText.charAt(i));
-                else
-                    newText += Character.toLowerCase(startText.charAt(i));
-            }
-        }
-
-
-
-        System.out.println("We got you this: " + newText);
-    }
-    public static char[] vowels = new char[]{'a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'Y', 'y'};
-    public static boolean isVowel(char c)
-    {
-        c = Character.toLowerCase(c);  //приводим символ в нижний регистр - от заглавных к строчным буквам
-
-        for (char d : vowels)   //ищем среди массива гласных
-        {
-            if (c == d)
-                return true;
-        }
-        return false;
     }
 }
