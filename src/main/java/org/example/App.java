@@ -9,15 +9,30 @@ public class App
         System.out.println("Enter text: ");
         String startText = scan.nextLine();
         System.out.println("You entered this: " + startText);
+        String newText1 = "";
         String newText = "";
         for (int i=0; i < startText.length(); i++)
         {
             if (Character.isLetter(startText.charAt(i)))
             {
                 if ((isVowel(startText.charAt(i))))
-                    newText += morda;
+                    newText1 += morda;
                 else
-                    newText += startText.charAt(i);
+                    newText1 += startText.charAt(i); //1234142
+            }
+        }
+
+
+
+        System.out.println("We got you this: " + newText1);
+        for (int i=0; i < startText.length(); i++)
+        {
+            if (Character.isLetter(startText.charAt(i)))
+            {
+                if (Character.isLowerCase(startText.charAt(i)))
+                    newText += Character.toUpperCase(startText.charAt(i));
+                else
+                    newText += Character.toLowerCase(startText.charAt(i));
             }
         }
 
