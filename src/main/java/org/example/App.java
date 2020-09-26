@@ -1,4 +1,5 @@
 package org.example;
+import org.example.chatutils.ChatBot;
 import org.example.utils.AppConstants;
 import org.example.utils.StringUtils;
 
@@ -25,8 +26,17 @@ public class App
                 String textUpperToLower = StringUtils.upperToLower(startText);
                 System.out.println(AppConstants.REPLY_TEXT + textUpperToLower);
                 break;
+            case AppConstants.OPTION_3:
+                ChatBot chatBot = new ChatBot();
+                System.out.println(AppConstants.START_CHAT);
+                        while (true){
+                            startText = scan.nextLine();
+                            if (StringUtils.getAnswerFromChatBot(startText, chatBot)) break;
+                        }
+                        break;
             default:
                 System.out.println(AppConstants.ERROR_TEXT);
         }
     }
+
 }

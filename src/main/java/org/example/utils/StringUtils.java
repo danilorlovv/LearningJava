@@ -1,5 +1,7 @@
 package org.example.utils;
 
+import org.example.chatutils.ChatBot;
+
 public class StringUtils {
     public final static char[] vowels = new char[]{'a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'Y', 'y'};
     public final static String morda = "|0_0|";
@@ -45,6 +47,21 @@ public class StringUtils {
         {
             if (c == d)
                 return true;
+        }
+        return false;
+    }
+
+    public static boolean getAnswerFromChatBot(String startText, ChatBot chatBot) {
+        if (startText.equals(AppConstants.GOODBYE_TEXT)){
+            return true;
+        }
+        else{
+            try{
+                System.out.println(chatBot.getAnswer(startText));
+            }
+            catch (NoSuchFieldException e){
+                System.out.println(AppConstants.IM_SORRY_TEXT);
+            }
         }
         return false;
     }
