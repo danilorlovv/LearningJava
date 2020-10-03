@@ -1,5 +1,6 @@
 package org.example.chatutils;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.example.utils.AppConstants;
@@ -21,7 +22,6 @@ public class ChatBot {
     public ChatBot (Map<String, String> inputSet){
         setDataSet(inputSet);
         System.out.println("Инициализация dataSet прошла успешно");
-
     }
 
     public ChatBot(){
@@ -37,6 +37,9 @@ public class ChatBot {
             throw new NoSuchFieldException();
         }
     }
+    //Конструктор - это, похожая на метод конструкция, которая может быть public и private, не должна ничего возвращать(return)
+
+
 
 
 }
