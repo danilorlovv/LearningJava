@@ -2,6 +2,9 @@ package org.example.utils;
 
 import org.example.chatutils.ChatBot;
 
+import java.util.Map;
+import java.util.Scanner;
+
 public class StringUtils {
     public final static char[] vowels = new char[]{'a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'Y', 'y'};
     public final static String morda = "|0_0|";
@@ -64,5 +67,31 @@ public class StringUtils {
             }
         }
         return false;
+    }
+
+    public static void SpeakingWithBot(Scanner scan, ChatBot chatBotLearn) {
+        String startText;
+        while (true) {
+            startText = scan.nextLine();
+            if (getAnswerFromChatBot(startText, chatBotLearn)) break;
+        }
+    }
+
+    public static void QuestionsAndAnswers(Scanner scan, Map<String, String> dataSet) {
+        String forLearnQuestion;
+        String forLearnAnswer;
+        while (true){
+            System.out.println("Введите вопрос: ");
+            forLearnQuestion = scan.nextLine();
+            if (forLearnQuestion.equals("")){
+                break;
+            }
+            System.out.println("Введите ответ: ");
+            forLearnAnswer = scan.nextLine();
+            if (forLearnAnswer.equals("")){
+                break;
+            }
+            dataSet.put(forLearnQuestion, forLearnAnswer);
+        }
     }
 }

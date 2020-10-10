@@ -8,6 +8,7 @@ public class AppConstants {
             "1) Заменить гласные буквы на морду;\n" +
             "2) A --> a\n" +
             "3) Чат с ботом\n" +
+            "4) Обучение бота\n" +
             "Что выбираете?\n";
     public static final String OPTION_TEXT = "Введите текст: ";
     public static final String REPLY_TEXT = "Получилось это: ";
@@ -26,4 +27,5 @@ public class AppConstants {
     public static final String OPTION_3 = "3";
     public static final String GOODBYE_TEXT = "";
     public static final String START_CHAT = "Теперь вы можете начинать общение. Напишите что-нибудь:";
+    public static final String OTRION_4 = "4";
 }
